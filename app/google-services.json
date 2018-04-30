@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "810371532564",
+    "firebase_url": "https://washcotubesrpl.firebaseio.com",
+    "project_id": "washcotubesrpl",
+    "storage_bucket": "washcotubesrpl.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:810371532564:android:69589f96cdd97feb",
+        "android_client_info": {
+          "package_name": "tubesrpl.washco"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "810371532564-v2rjto2a6t0cmmi8o882v6e7cfc8uiv4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "tubesrpl.washco",
+            "certificate_hash": "caecbc8cacaecfbb8335c9992eaf6734c1e2e3ae"
+          }
+        },
+        {
+          "client_id": "810371532564-jj7tt45ve8naj3anihslrtvplsvcrvlk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-E8j6z1uYNMKkkBrj--6cQMQtFoJIyas"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "810371532564-jj7tt45ve8naj3anihslrtvplsvcrvlk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

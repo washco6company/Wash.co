@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/margin_24"
+    tools:context=".LoginActivity">
+
+    <ImageView
+        android:id="@+id/iv_washco"
+        android:layout_width="175dp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="175dp"
+        android:src="@drawable/logowash"/>
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/et_email"
+        android:layout_below="@id/iv_washco"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:errorEnabled="true">
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:inputType="textEmailAddress" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/et_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et_email"
+        app:errorEnabled="true"
+        app:passwordToggleEnabled="true">
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:inputType="textPassword" />
+
+    </android.support.design.widget.TextInputLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et_password"
+        android:weightSum="2"
+        android:orientation="horizontal"
+        android:id="@+id/tablerow">
+
+        <Button
+            android:id="@+id/btn_masuk"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="masuk" android:backgroundTint="@color/washCo"
+            android:textColor="@color/white"/>
+
+        <Button
+            android:id="@+id/btn_daftar"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Daftar" android:backgroundTint="@color/washCo"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
+
+    <!--<Button-->
+        <!--android:id="@+id/btn_admin"-->
+        <!--android:layout_width="100dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@+id/tablerow"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:text="for admin" />-->
+
+
+</RelativeLayout>
