@@ -22,7 +22,7 @@ import java.util.List;
 import tubesrpl.washco.DetailPostActivity;
 import tubesrpl.washco.MainActivity;
 import tubesrpl.washco.R;
-import tubesrpl.washco.Model.Post;
+import tubesrpl.washco.SetterGetter.Post;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 

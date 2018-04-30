@@ -1,4 +1,4 @@
-package tubesrpl.washco.Model;
+package tubesrpl.washco.SetterGetter;
 
 import java.util.HashMap;
 import java.util.Map;
