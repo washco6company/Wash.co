@@ -1,5 +1,7 @@
 package tubesrpl.washco.ModelUI;
 
+import com.google.firebase.database.Exclude;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,6 +18,11 @@ public class Post {
 
     //Wajib kasih Constructor Kosong
     public Post() {
+    }
+
+    public Post(String id, int favCount) {
+        this.id = id;
+        this.favCount = favCount;
     }
 
     public Post(String id, String userID, String mImagePost, String titlePost, String laundryname, String address, String price, int favCount) {
@@ -60,5 +67,22 @@ public class Post {
     public String getLaundryname() {
         return laundryname;
     }
+
+
+    @Exclude
+    public Map<String, Object> toMap() {
+
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("uid", id);
+        result.put("price", price);
+        result.put("imagePost", imagePost);
+        result.put("laundryname", laundryname);
+        result.put("titlePost", titlePost);
+        result.put("address", address);
+        result.put("userID", userID);
+        result.put("favCount", favCount);
+        return result;
+    }
+
 
 }

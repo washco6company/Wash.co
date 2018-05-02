@@ -5,11 +5,13 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
@@ -17,14 +19,22 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import tubesrpl.washco.DetailPostActivity;
 import tubesrpl.washco.MainActivity;
 import tubesrpl.washco.R;
 import tubesrpl.washco.ModelUI.Post;
 
+import static android.support.constraint.Constraints.TAG;
+
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
+
+    FirebaseAuth mAuth;
 
     Context context;
     List<Post> postList;
@@ -64,6 +74,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     public PostAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.layout_post, parent, false);
+        mAuth = FirebaseAuth.getInstance();
         return new ViewHolder(v);
     }
 
@@ -79,8 +90,14 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         holder.mAddress.setText(post.getAddress());
         holder.mPrice.setText(post.getPrice());
 
+//        String a = post.getId();
+//        DatabaseReference likepost = FirebaseDatabase.getInstance().getReference(MainActivity.table1);
+//        String currentUser = mAuth.getCurrentUser().getUid();
+//
+//        likepost.child(a).child("like").setValue(currentUser);
+
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Post");
-        DatabaseReference mostafa = ref.child(post.getId()).child("favCount");
+        final DatabaseReference mostafa = ref.child("favCount");
 
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         DatabaseReference databaseFood = FirebaseDatabase.getInstance().getReference(MainActivity.table1).child(mAuth.getUid()).child("favCount");
@@ -89,21 +106,27 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             @Override
             public void onClick(View v) {
                 if (holder.favoriteIm.getDrawable().getConstantState() ==
-                        context.getResources().getDrawable(R.drawable.ic_favorite_border_black_24dp).getConstantState())
-                    holder.favoriteIm.setImageResource(R.drawable.ic_favorite_black_24dp);
-                else
+                        context.getResources().getDrawable(R.drawable.ic_favorite_border_black_24dp).getConstantState()) {
+                    int recent = post.getFavCount();
+
+                    addLike(post.getId(), ++recent, holder);
+                    Toast.makeText(context, "Sdh sy like", Toast.LENGTH_SHORT).show();
+                } else {
+                    // Unlike
+                    deleteLike();
                     holder.favoriteIm.setImageResource(R.drawable.ic_favorite_border_black_24dp);
+                }
             }
         });
-
-        /*holder.favoriteIm.setOnClickListener(new View.OnClickListener() {
+        /*
+        holder.favoriteIm.setOnClickListener(new View.OnClickListener() {
             DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Post");
             DatabaseReference mostafa = ref.child(post.getId()).child("favCount");
             @Override
             public void onClick(View v) {
                 if (holder.favoriteIm.getDrawable().getConstantState() ==
                         context.getResources().getDrawable( R.drawable.ic_favorite_border_black_24dp).getConstantState()) {
-                    holder.favoriteIm.setImageResource(R.drawab le.ic_favorite_black_24dp);
+                    holder.favoriteIm.setImageResource(R.drawable.ic_favorite_black_24dp);
 
                     mostafa.addValueEventListener(new ValueEventListener() {
                         @Override
@@ -139,7 +162,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
                 });
             }
-        });*/
+        });
+        */
 
         holder.cardViewPost.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -160,6 +184,20 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     @Override
     public int getItemCount() {
         return postList.size();
+    }
+
+    public void addLike(String id, int favCount, ViewHolder holder) {
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Post");
+        String key = databaseReference.child("favCount").getKey();
+
+        Map<String, Object> childUpdates = new HashMap<>();
+        childUpdates.put(id + "/" + key, favCount);
+        databaseReference.updateChildren(childUpdates);
+        holder.favoriteIm.setImageResource(R.drawable.ic_favorite_black_24dp);
+    }
+
+    public void deleteLike() {
+
     }
 
 }

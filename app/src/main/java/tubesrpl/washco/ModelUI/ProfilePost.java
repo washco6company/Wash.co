@@ -38,11 +38,11 @@ public class ProfilePost {
         return titlePost;
     }
 
-    public String getPost() {
+    public String getPassword() {
         return post;
     }
 
-    public String getLaundryname() {
+    public String getUsername() {
         return laundryname;
     }
 }

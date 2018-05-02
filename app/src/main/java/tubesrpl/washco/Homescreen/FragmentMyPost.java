@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SimpleItemAnimator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,11 +48,7 @@ public class FragmentMyPost extends Fragment {
 
         listPosts = new ArrayList<>();
 
-        return view;
-    }
 
-    public void onStart() {
-        super.onStart();
         databaseFood.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -76,5 +73,12 @@ public class FragmentMyPost extends Fragment {
 
             }
         });
+
+        return view;
+    }
+
+    public void onStart() {
+        super.onStart();
+
     }
 }

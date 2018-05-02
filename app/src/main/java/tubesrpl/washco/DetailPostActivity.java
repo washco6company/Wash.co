@@ -109,17 +109,12 @@ public class DetailPostActivity extends AppCompatActivity {
                 listComments.clear();
 
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-
                     Comment comment = postSnapshot.getValue(Comment.class);
-
                     listComments.add(comment);
                 }
                 recyclerView.setHasFixedSize(true);
-
                 recyclerView.setLayoutManager(new GridLayoutManager(DetailPostActivity.this, 1));
-
                 CommentAdapter commentList = new CommentAdapter(DetailPostActivity.this, listComments);
-
                 recyclerView.setAdapter(commentList);
             }
 

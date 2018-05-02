@@ -106,6 +106,7 @@ public class AddPostActivity extends AppCompatActivity {
                                 String download_url = uploadTask.getResult().getDownloadUrl().toString();
                                 int favcount =0;
                                 Post post = new Post(id, userId, download_url, title, laundryname, address, price+" IDR", favcount);
+
                                 databaseFood.child(id).setValue(post);
 
                             } else {
