@@ -49,11 +49,11 @@ public class HomeActivity extends AppCompatActivity {
         if (id == R.id.logout) {
             mAuth.signOut();
             Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
-            startActivity(intent);
+            
             finish();
         } else if (id == R.id.profile) {
             Intent intent = new Intent(HomeActivity.this, ProfileUserActivity.class);
-            startActivity(intent);
+
             finish();
         }
         return true;
@@ -61,6 +61,6 @@ public class HomeActivity extends AppCompatActivity {
 
     public void toLaundryList(View view) {
         Intent intent = new Intent(HomeActivity.this, MainActivity.class);
-        startActivity(intent);
+
     }
 }

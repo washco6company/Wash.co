@@ -56,7 +56,7 @@ public class DetailPostActivity extends AppCompatActivity {
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerViewComment);
 
-        listComments = new ArrayList<>();
+
 
         mUsername = (TextView) findViewById(R.id.tv_laundry_name);
         mImagePost = (ImageView) findViewById(R.id.img_post);
@@ -94,10 +94,7 @@ public class DetailPostActivity extends AppCompatActivity {
                 }
             }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
 
-            }
         });
     }
 
@@ -126,10 +123,6 @@ public class DetailPostActivity extends AppCompatActivity {
                 recyclerView.setAdapter(commentList);
             }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
         });
     }
 }
