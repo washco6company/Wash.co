@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import tubesrpl.washco.R;
-import tubesrpl.washco.Model.Comment;
+import tubesrpl.washco.ModelUI.Comment;
 
 public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHolder> {
 

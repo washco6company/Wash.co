@@ -25,8 +25,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import tubesrpl.washco.Model.Post;
-import tubesrpl.washco.Model.User;
+import tubesrpl.washco.ModelUI.Post;
+import tubesrpl.washco.ModelUI.User;
 
 
 public class AddPostActivity extends AppCompatActivity {

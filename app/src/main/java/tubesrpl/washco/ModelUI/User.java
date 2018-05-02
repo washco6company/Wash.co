@@ -1,4 +1,4 @@
-package tubesrpl.washco.Model;
+package tubesrpl.washco.ModelUI;
 
 public class User {
 

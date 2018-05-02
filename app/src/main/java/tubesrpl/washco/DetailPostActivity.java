@@ -23,8 +23,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 import tubesrpl.washco.Adapter.CommentAdapter;
-import tubesrpl.washco.Model.Comment;
-import tubesrpl.washco.Model.User;
+import tubesrpl.washco.ModelUI.Comment;
+import tubesrpl.washco.ModelUI.User;
 
 public class DetailPostActivity extends AppCompatActivity {
 
