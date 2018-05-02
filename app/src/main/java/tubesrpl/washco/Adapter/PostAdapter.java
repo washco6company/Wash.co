@@ -12,9 +12,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.FirebaseError;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.MutableData;
+import com.google.firebase.database.Transaction;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,9 +79,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
         holder.mLaundryName.setText(post.getLaundryname());
         holder.favNum.setText(String.valueOf(post.getFavCount()));
-        Glide.with(context)
-                .load(post.getImagePost())
-                .into(holder.mImagePost);
+        Glide.with(context).load(post.getImagePost()).into(holder.mImagePost);
 
 //        holder.mTitlePost.setText(post.getTitlePost());
         holder.mAddress.setText(post.getAddress());
@@ -84,52 +88,64 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Post");
         DatabaseReference mostafa = ref.child(post.getId()).child("favCount");
 
-
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
-
         DatabaseReference databaseFood = FirebaseDatabase.getInstance().getReference(MainActivity.table1).child(mAuth.getUid()).child("favCount");
 
-        /*mostafa.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Post post1 = dataSnapshot.getValue(Post.class);
-                holder.favNum.setText(Integer.valueOf(post1.getFavCount()));
-            }
+//        holder.favoriteIm.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (holder.favoriteIm.getDrawable().getConstantState() ==
+//                        context.getResources().getDrawable( R.drawable.ic_favorite_border_black_24dp).getConstantState())
+//                    holder.favoriteIm.setImageResource(R.drawable.ic_favorite_black_24dp);
+//                else
+//                    holder.favoriteIm.setImageResource(R.drawable.ic_favorite_border_black_24dp);
+//            }
+//        });
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-        databaseFood.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                Post post1 = dataSnapshot.getValue(Post.class);
-                holder.favNum.setText(Integer.valueOf(post1.getFavCount()));
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-*/
-        holder.favoriteIm.setOnClickListener(new View.OnClickListener() {
-
-
+        /*holder.favoriteIm.setOnClickListener(new View.OnClickListener() {
+            DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Post");
+            DatabaseReference mostafa = ref.child(post.getId()).child("favCount");
             @Override
             public void onClick(View v) {
                 if (holder.favoriteIm.getDrawable().getConstantState() ==
-                        context.getResources().getDrawable( R.drawable.ic_favorite_border_black_24dp).getConstantState())
+                        context.getResources().getDrawable( R.drawable.ic_favorite_border_black_24dp).getConstantState()) {
                     holder.favoriteIm.setImageResource(R.drawable.ic_favorite_black_24dp);
-                else
-                    holder.favoriteIm.setImageResource(R.drawable.ic_favorite_border_black_24dp);
-            }
-        });
 
+                    mostafa.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            int count = (int) dataSnapshot.child("favCount").getValue();
+                            //int count = dataSnapshot.child(post.getId()).child("favCount").getValue(Integer.class)
+                            mostafa.setValue(count++);
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                            throw databaseError.toException();
+                        }
+
+                    });
+
+                }
+                else holder.favoriteIm.setImageResource(R.drawable.ic_favorite_border_black_24dp);
+
+                mostafa.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        int count = (int) dataSnapshot.child("favCount").getValue();
+//                                count = (long) dataSnapshot.child("favCount").getValue();
+                        //int count = dataSnapshot.child(post.getId()).child("favCount").getValue(Integer.class);
+                        mostafa.setValue(count--);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        throw databaseError.toException();
+                    }
+
+                });
+            }
+        });*/
 
         holder.cardViewPost.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -153,3 +169,4 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     }
 
 }
+
