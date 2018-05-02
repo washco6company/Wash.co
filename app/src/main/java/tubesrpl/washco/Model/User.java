@@ -1,4 +1,4 @@
-package tubesrpl.washco.SetterGetter;
+package tubesrpl.washco.Model;
 
 public class User {
 

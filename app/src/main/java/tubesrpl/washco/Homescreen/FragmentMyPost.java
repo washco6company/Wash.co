@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import tubesrpl.washco.MainActivity;
 import tubesrpl.washco.R;
 import tubesrpl.washco.Adapter.PostAdapter;
-import tubesrpl.washco.SetterGetter.Post;
+import tubesrpl.washco.Model.Post;
 
 
 public class FragmentMyPost extends Fragment {
