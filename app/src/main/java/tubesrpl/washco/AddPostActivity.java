@@ -25,13 +25,13 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import tubesrpl.washco.ModelUI.Post;
-import tubesrpl.washco.ModelUI.User;
+import tubesrpl.washco.Model.Post;
+import tubesrpl.washco.Model.User;
 
 
 public class AddPostActivity extends AppCompatActivity {
 
-    private static final int PICK_IMAGE = 3;
+    private static final int PICK_IMAGE = 1;
 
     EditText mTitlePost, mAddress, mLaundryName, mPrice;
     ImageView imageView;
@@ -72,8 +72,10 @@ public class AddPostActivity extends AppCompatActivity {
         mChooseImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE);
             }
         });
     }
@@ -120,7 +122,10 @@ public class AddPostActivity extends AppCompatActivity {
                     Toast.makeText(AddPostActivity.this, "Uploaded", Toast.LENGTH_LONG).show();
                     Intent i = new Intent(AddPostActivity.this, MainActivity.class);
                     startActivity(i);
-
+                } else {
+                    //if the value is not given displaying a toast
+                    Toast.makeText(AddPostActivity.this, "Please Fill the form and choose image", Toast.LENGTH_LONG).show();
+                }
             }
 
             @Override
@@ -131,6 +136,13 @@ public class AddPostActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
+        if (requestCode == PICK_IMAGE) {
+            imageUri = data.getData();
+            imageView.setImageURI(imageUri);
+        }
     }
 }

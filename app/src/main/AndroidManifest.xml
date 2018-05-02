@@ -58,8 +58,7 @@
         </activity>
         <activity
             android:name=".ProfileUserActivity"
-            android:label="User Profile"
-            android:parentActivityName=".MainActivity" />
+            android:label="User Profile" />
         <activity android:name=".SplashScreenActivity"
             android:theme="@style/SplashTheme">
         <intent-filter>

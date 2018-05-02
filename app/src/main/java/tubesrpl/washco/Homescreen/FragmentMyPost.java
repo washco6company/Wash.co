@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SimpleItemAnimator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,10 +18,10 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-import tubesrpl.washco.MainActivity;
-import tubesrpl.washco.R;
 import tubesrpl.washco.Adapter.PostAdapter;
-import tubesrpl.washco.ModelUI.Post;
+import tubesrpl.washco.MainActivity;
+import tubesrpl.washco.Model.Post;
+import tubesrpl.washco.R;
 
 
 public class FragmentMyPost extends Fragment {

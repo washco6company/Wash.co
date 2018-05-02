@@ -18,10 +18,10 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-import tubesrpl.washco.MainActivity;
-import tubesrpl.washco.R;
 import tubesrpl.washco.Adapter.PostAdapter;
-import tubesrpl.washco.ModelUI.Post;
+import tubesrpl.washco.MainActivity;
+import tubesrpl.washco.Model.Post;
+import tubesrpl.washco.R;
 
 
 public class FragmentPostTerbaru extends Fragment {

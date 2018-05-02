@@ -1,4 +1,4 @@
-package tubesrpl.washco.ModelUI;
+package tubesrpl.washco.Model;
 
 import com.google.firebase.database.Exclude;
 

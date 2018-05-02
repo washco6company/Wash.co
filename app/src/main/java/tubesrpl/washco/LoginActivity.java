@@ -17,7 +17,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import tubesrpl.washco.ModelUI.User;
+import tubesrpl.washco.Model.User;
 
 public class LoginActivity extends AppCompatActivity {
 

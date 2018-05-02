@@ -23,8 +23,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 import tubesrpl.washco.Adapter.CommentAdapter;
-import tubesrpl.washco.ModelUI.Comment;
-import tubesrpl.washco.ModelUI.User;
+import tubesrpl.washco.Model.Comment;
+import tubesrpl.washco.Model.User;
 
 public class DetailPostActivity extends AppCompatActivity {
 
@@ -56,7 +56,7 @@ public class DetailPostActivity extends AppCompatActivity {
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerViewComment);
 
-
+        listComments = new ArrayList<>();
 
         mUsername = (TextView) findViewById(R.id.tv_laundry_name);
         mImagePost = (ImageView) findViewById(R.id.img_post);
@@ -94,7 +94,10 @@ public class DetailPostActivity extends AppCompatActivity {
                 }
             }
 
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
+            }
         });
     }
 
@@ -118,6 +121,10 @@ public class DetailPostActivity extends AppCompatActivity {
                 recyclerView.setAdapter(commentList);
             }
 
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
         });
     }
 }
