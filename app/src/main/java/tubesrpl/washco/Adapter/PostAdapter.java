@@ -91,16 +91,16 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         DatabaseReference databaseFood = FirebaseDatabase.getInstance().getReference(MainActivity.table1).child(mAuth.getUid()).child("favCount");
 
-//        holder.favoriteIm.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (holder.favoriteIm.getDrawable().getConstantState() ==
-//                        context.getResources().getDrawable( R.drawable.ic_favorite_border_black_24dp).getConstantState())
-//                    holder.favoriteIm.setImageResource(R.drawable.ic_favorite_black_24dp);
-//                else
-//                    holder.favoriteIm.setImageResource(R.drawable.ic_favorite_border_black_24dp);
-//            }
-//        });
+        holder.favoriteIm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (holder.favoriteIm.getDrawable().getConstantState() ==
+                        context.getResources().getDrawable(R.drawable.ic_favorite_border_black_24dp).getConstantState())
+                    holder.favoriteIm.setImageResource(R.drawable.ic_favorite_black_24dp);
+                else
+                    holder.favoriteIm.setImageResource(R.drawable.ic_favorite_border_black_24dp);
+            }
+        });
 
         /*holder.favoriteIm.setOnClickListener(new View.OnClickListener() {
             DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Post");
@@ -109,7 +109,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             public void onClick(View v) {
                 if (holder.favoriteIm.getDrawable().getConstantState() ==
                         context.getResources().getDrawable( R.drawable.ic_favorite_border_black_24dp).getConstantState()) {
-                    holder.favoriteIm.setImageResource(R.drawable.ic_favorite_black_24dp);
+                    holder.favoriteIm.setImageResource(R.drawab le.ic_favorite_black_24dp);
 
                     mostafa.addValueEventListener(new ValueEventListener() {
                         @Override
