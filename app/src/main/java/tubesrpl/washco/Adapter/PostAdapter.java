@@ -53,14 +53,14 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         public ViewHolder(View itemView) {
             super(itemView);
 
-            mLaundryName = (TextView) itemView.findViewById(R.id.tv_laundry_name);
-            mTitlePost = (TextView) itemView.findViewById(R.id.tv_title_post);
-            mPrice = (TextView) itemView.findViewById(R.id.tv_price);
-            mAddress = (TextView) itemView.findViewById(R.id.tv_address);
-            mImagePost = (ImageView) itemView.findViewById(R.id.img_post);
-            favoriteIm = (ImageView) itemView.findViewById(R.id.favorite);
-            favNum = (TextView) itemView.findViewById(R.id.fav_num);
-            cardViewPost = (CardView) itemView.findViewById(R.id.cardViewPost);
+            mLaundryName = itemView.findViewById(R.id.tv_laundry_name);
+            mTitlePost = itemView.findViewById(R.id.tv_title_post);
+            mPrice = itemView.findViewById(R.id.tv_price);
+            mAddress = itemView.findViewById(R.id.tv_address);
+            mImagePost = itemView.findViewById(R.id.img_post);
+            favoriteIm = itemView.findViewById(R.id.favorite);
+            favNum = itemView.findViewById(R.id.fav_num);
+            cardViewPost = itemView.findViewById(R.id.cardViewPost);
         }
     }
 
@@ -105,7 +105,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
                     int recent = post.getFavCount();
 
                     addLike(post.getId(), ++recent, holder);
-                    Toast.makeText(context, "Sdh sy like", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Sudah Terlike", Toast.LENGTH_SHORT).show();
                 } else {
                     // Unlike
                     deleteLike();

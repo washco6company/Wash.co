@@ -19,15 +19,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/img_user"
         android:orientation="vertical">
-        <Button
-            android:id="@+id/btn_add_image_profile"
-            android:layout_width="80dp"
-            android:layout_height="35dp"
-            android:onClick="addImage"
-            android:text="add image"
-            android:textSize="10sp"
-            android:layout_below="@id/img_post"
-            android:layout_gravity="center"/>
         <EditText
             android:id="@+id/et_username"
             android:layout_width="match_parent"
